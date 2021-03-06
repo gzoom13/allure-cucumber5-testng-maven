@@ -2,6 +2,7 @@ package io.qameta.allure.examples.cucumber5;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Allure;
 
 import static io.qameta.allure.Allure.step;
 
@@ -15,6 +16,9 @@ public class RestSteps {
     @When("I delete label with title {string} via api")
     public void deleteLabelWithTitle(final String title) {
         step("GET /repos/:owner/:repo/labels?text=" + title);
+        Allure.link("http://example.org/link");
+        Allure.link("desc", "http://example.org/link-with-desc");
+        Allure.link("desc", "some-type", "http://example.org/link-with-desc-and-type");
         step("DELETE /repos/:owner/:repo/labels/237");
 
     }
